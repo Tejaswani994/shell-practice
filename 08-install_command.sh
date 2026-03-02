@@ -1,7 +1,6 @@
 #!/bin/bash
 
 USERID=$(id -u)
-
 if [ $USERID -ne 0 ]
 then
     echo "ERROR:: Plese run with sudo access"
@@ -11,7 +10,6 @@ else
 fi
 
 dnf list installed mysql
-
 if [ $? -ne 0 ]
 then
     echo "Need to install mysql"

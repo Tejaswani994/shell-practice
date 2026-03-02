@@ -5,3 +5,9 @@ echo "First Movie: ${MOVIES[0]}"
 echo "First Movie: ${MOVIES[1]}"
 
 echo "All Movies: ${MOVIES[@]}"
+
+
+
+#OUTPUT:: First Movie: court
+#-->      First Movie: HIT3
+#-->      All Movies: court HIT3 BEAUTY THANDEL

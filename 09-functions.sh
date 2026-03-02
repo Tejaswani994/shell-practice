@@ -1,23 +1,29 @@
 #!/bin/bash
-#!/bin/bash
 
+# ensure script is run with root privileges
 USERID=$(id -u)
 if [ $USERID -ne 0 ]
 then
-    echo "ERROR:: Plese run with sudo access"
-    exit
+    echo "ERROR:: Please run with sudo access"
+    exit 1
 else
     echo "you are running with sudo access"
 fi
 
+#----------------------------------------------------------------
+# helper function to validate the exit status of a command
+# Usage: VALIDATE <exit_code> <package_name>
+#----------------------------------------------------------------
+VALIDATE() {
+    if [ "$1" -eq 0 ]
+    then
+        echo "Installing $2 is success"
+    else
+        echo "Installing $2 is failure"
+        exit 1
+    fi
+}
 
-VALIDATE [ $1 -eq 0 ]
-then
-    echo "Installing $2 is success"
-else
-    echo "Installing $2 is failure"
-    exit 1
-fi
 
 dnf list installed mysql
 if [ $? -ne 0 ]

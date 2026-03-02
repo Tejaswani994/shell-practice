@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# colour codes
+RED='\e[31m'
+GREEN='\e[32m'
+NC='\e[0m'         # no colour (reset)
+
+# ensure script is run with root privileges
+USERID=$(id -u)
+if [ $USERID -ne 0 ]
+then
+    echo -e "${RED}ERROR:: Please run with sudo access${NC}"
+    exit 1
+else
+    echo -e "${GREEN}you are running with sudo access${NC}"
+fi
+
+#----------------------------------------------------------------
+# helper function to validate the exit status of a command
+# Usage: VALIDATE <exit_code> <package_name>
+#----------------------------------------------------------------
+VALIDATE() {
+    if [ "$1" -eq 0 ]
+    then
+        # success in green
+        echo -e "${GREEN}Installing $2 is success${NC}"
+    else
+        # failure in red
+        echo -e "${RED}Installing $2 is failure${NC}"
+        exit 1
+    fi
+}
+
+
+dnf list installed mysql
+if [ $? -ne 0 ]
+then
+    echo "Need to install mysql"
+    dnf install mysql -y
+    VALIDATE $? "mysql" 
+else
+    echo "no need to install mysql"
+fi
+
+dnf list installed python3
+if [ $? -ne 0 ]
+then
+    echo "Need to install python3"
+    dnf install python3 -y
+    VALIDATE $? "python3"   
+else
+    echo "no need to install python3"
+fi
+
+dnf list installed nginx
+if [ $? -ne 0 ]
+then
+    echo "Need to install nginx"
+    dnf install nginx -y
+    VALIDATE $? "nginx" 
+    
+else
+    echo "no need to install nginx"
+fi

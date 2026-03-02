@@ -15,4 +15,19 @@ echo -e "\e[46m hello world \e[0m"
 echo -e "\e[47m hello world \e[0m"
 
 
-#OUTPUT: 
+#OUTPUT: rgybmcw
+ #hello world in red
+ #hello world in green
+ #hello world in yellow
+ #hello world in blue
+ #hello world in magenta
+ #hello world in cyan
+ #hello world in white
+ #hello world with red background
+ #hello world with green background
+#hello world with yellow background
+#hello world with blue background
+#hello world with magenta background
+#hello world with cyan background
+#hello world with white background
+

@@ -64,3 +64,20 @@ then
 else
     echo -e "Nothing to do nginx... $Y already installed $N" | tee -a $LOG_FILE
 fi
+
+
+## show the whole file
+#cat "$LOG_FILE"
+
+# or, better, follow it as it grows
+#tail -f "$LOG_FILE"
+
+# view the last few lines
+#tail -n 20 "$LOG_FILE"
+
+# open it in a pager
+#less "$LOG_FILE"
+
+#sudo cat /var/log/shellscript-logs/13-logs_check.log   # dump entire log
+#sudo tail -f /var/log/shellscript-logs/13-logs_check.log  # follow as it grows
+#sudo less /var/log/shellscript-logs/13-logs_check.log
